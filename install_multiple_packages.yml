@@ -1,0 +1,12 @@
+---
+-  name: my test playbook
+   hosts: all
+   become: true
+   tasks:
+   -  name: instlled multiple
+      yum:
+        name: [ 'git','which','mysql','tree','wget' ]
+        state: installed
+
+        
+

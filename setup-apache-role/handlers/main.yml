@@ -1,0 +1,9 @@
+---
+- name: start httpd service
+  service: 
+     name: httpd
+     state: started
+- name: start apche service
+  service:
+     name: apache
+     state: started  

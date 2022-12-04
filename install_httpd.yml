@@ -1,0 +1,33 @@
+---
+-  name: my test playbook
+   hosts: all
+   become: true
+   tasks:
+   -  name: instlled package
+      yum:
+        name: httpd
+        state: installed
+      when: ansible_os_family == "RedHat"
+   
+   -  name:  start service
+      service:
+         name: httpd
+         state: started
+      when: ansible_os_family == "RedHat"
+    
+   -  name: install apache2
+      apt:
+         name: apache2
+         state: present
+      when: ansible_os_family == "Debain"
+
+   -  name: start apache2
+      service:
+         name: apache2
+         state: started
+      when: ansible_os_family == "Debain"
+   -  name: copy file
+      copy:
+         src: /home/ansadmin/index.html
+         dest: /var/www/html
+         mode: 0666
